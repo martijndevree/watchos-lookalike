@@ -4,4 +4,6 @@
 
 Vanilla JS solution for app bubbles that scale on scroll, built with [Vite](https://vitejs.dev/).
 
-To start, run `npm install`, then `npm run dev`. Scroll within the 'watch face' to see the magic happen.
+Codepen: https://codepen.io/martijndevree/pen/yLGvWKW
+
+To view locally, run `npm install`, then `npm run dev`. Scroll within the 'watch face' to see the magic happen.
