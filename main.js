@@ -94,9 +94,6 @@ function observerCallback(entries) {
 
     bubbles.forEach((bubble, index) => {
       if (!entry.isIntersecting) {
-        bubble.style.transform = 'scale(0)';
-        return;
-      } else if (ratio === 1) {
         if (!!bubble.style.transform) bubble.style.transform = '';
         return;
       }
