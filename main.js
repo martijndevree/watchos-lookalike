@@ -1,4 +1,4 @@
-import { clampValue, getBubbleTranslateXValue, getRandomColor } from './helpers.js';
+import { clampValue, getBubbleTransformOrigin, getRandomColor } from './helpers.js';
 
 let body;
 let watchFace;
@@ -48,9 +48,10 @@ function addBubbles() {
       rowElement.appendChild(bubbleElement);
     }
 
+    watchFace.appendChild(rowElement);
+
     // Set the number of row items for the next row.
     itemsPerRow = itemsPerRow === 3 ? 4 : 3;
-    watchFace.appendChild(rowElement);
   }
 }
 
@@ -98,13 +99,10 @@ function observerCallback(entries) {
         return;
       }
 
-      // Get a `translateX` value to slightly offset the bubble
-      // based on the index of the bubble element.
-      const translate = getBubbleTranslateXValue(ratio, bubbles.length, index);
-      bubble.style.transform = `scale(${scaleValue}) ${translate}`;
+      bubble.style.transform = `scale(${scaleValue})`;
 
-      // Set the transform origin based on whether the element moves up or down.
-      bubble.style.transformOrigin = elementTop < rootTop ? 'bottom center' : 'top center';
+      // Set the transform origin for each bubble.
+      bubble.style.transformOrigin = getBubbleTransformOrigin(bubbles.length, index, elementTop < rootTop);
     });
   });
 }

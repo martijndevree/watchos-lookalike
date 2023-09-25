@@ -17,6 +17,8 @@ export function randomIntFromInterval(min, max) {
 /**
  * Returns a random HSL color value within a certain range.
  *
+ * Courtesy of https://stackoverflow.com/a/43195379/9413490
+ *
  * @returns {string}
  *   The HSL color value.
  */
@@ -50,44 +52,42 @@ export function clampValue(val, min, max) {
 }
 
 /**
- * Returns a `translateX` value for a given bubble element index.
+ * Returns a transform origin value based on a given row length, bubble index,
+ * and whether the bubble is moving up or down. The X-axis origin offset makes
+ * it look like the bubbles are pulled towards the center of the watch face.
  *
- * @param ratio
- *   The `intersectionRatio` of the current row.
  * @param rowLength
  *   The total number of items in the current row.
  * @param bubbleIndex
  *   The index of the current bubble element.
+ * @param isMovingUp
+ *   Whether the bubble is moving up or down.
  * @returns {string}
- *   The `translateX` value.
+ *   The transform origin value.
  */
-export function getBubbleTranslateXValue(ratio, rowLength, bubbleIndex) {
-  let translateValue = '';
+export function getBubbleTransformOrigin(rowLength, bubbleIndex, isMovingUp) {
+  const yAxisOrigin = isMovingUp ? '100%' : '0%';
   if (rowLength === 3) {
     switch (bubbleIndex) {
       case 0:
-        translateValue = `translateX(${30 - (ratio * 30)}%)`;
-        break;
+        return `65% ${yAxisOrigin}`;
+      case 1:
+        return `50% ${yAxisOrigin}`;
       case 2:
-        translateValue = `translateX(-${30 - (ratio * 30)}%)`;
-        break;
+        return `35% ${yAxisOrigin}`;
     }
   } else {
     switch (bubbleIndex) {
       case 0:
-        translateValue = `translateX(${35 - (ratio * 35)}%)`;
-        break;
+        return `65% ${yAxisOrigin}`;
       case 1:
-        translateValue = `translateX(${25 - (ratio * 25)}%)`;
-        break;
+        return `55% ${yAxisOrigin}`;
       case 2:
-        translateValue = `translateX(-${25 - (ratio * 25)}%)`;
-        break;
-      default:
-        translateValue = `translateX(-${35 - (ratio * 35)}%)`;
-        break;
+        return `45% ${yAxisOrigin}`;
+      case 3:
+        return `35% ${yAxisOrigin}`;
     }
   }
 
-  return translateValue;
+  return '';
 }
