@@ -3,9 +3,9 @@
  *
  * Courtesy of https://stackoverflow.com/a/7228322/9413490
  *
- * @param min
+ * @param {number} min
  *   The minimum number.
- * @param max
+ * @param {number} max
  *   The maximum number.
  * @returns {number}
  *   The randomly generated number.
@@ -38,11 +38,11 @@ export function getRandomColor(){
  *
  * Courtesy of https://stackoverflow.com/a/11409944/9413490
  *
- * @param val
+ * @param {number} val
  *   The value that should be clamped.
- * @param min
+ * @param {number} min
  *   The minimum value.
- * @param max
+ * @param {number} max
  *   The maximum value.
  * @returns {number}
  *   The clamped value.
@@ -56,11 +56,11 @@ export function clampValue(val, min, max) {
  * and whether the bubble is moving up or down. The X-axis origin offset makes
  * it look like the bubbles are pulled towards the center of the watch face.
  *
- * @param rowLength
+ * @param {number} rowLength
  *   The total number of items in the current row.
- * @param bubbleIndex
+ * @param {number} bubbleIndex
  *   The index of the current bubble element.
- * @param isMovingUp
+ * @param {boolean} isMovingUp
  *   Whether the bubble is moving up or down.
  * @returns {string}
  *   The transform origin value.

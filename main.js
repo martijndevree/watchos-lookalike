@@ -78,7 +78,7 @@ function calculateWatchFaceSize() {
 /**
  * Callback function for observer.
  *
- * @param entries
+ * @param {IntersectionObserverEntry[]} entries
  *   The observed elements.
  */
 function observerCallback(entries) {
